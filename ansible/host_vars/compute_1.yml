@@ -1,0 +1,5 @@
+# This file isn't strictly necessary but is included for reference
+ansible_connection: ssh
+ansible_port: 22
+ansible_python_interpreter: /usr/bin/python
+ansible_user: root

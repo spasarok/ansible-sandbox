@@ -1,0 +1,8 @@
+[local]
+localhost ansible_connection=local
+
+[computes]
+compute_[1:3]
+
+[dbs]
+db_[1:2]

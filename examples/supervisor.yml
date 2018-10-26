@@ -1,0 +1,21 @@
+version: '3'
+services:
+  control:
+    build:
+      context: ..
+      dockerfile: docker/control/Dockerfile
+    container_name: control
+    image: ansible_sandbox/control
+    volumes:
+      - "./ansible:/etc/ansible"
+  db:
+    build:
+      context: ..
+      dockerfile: docker/mysql/Dockerfile
+    container_name: mysql_compute_1
+    environment:
+      MYSQL_DATABASE: test_db
+      MYSQL_ROOT_PASSWORD: password
+    image: ansible_sandbox/db_compute
+    ports:
+      - "3307:3306"

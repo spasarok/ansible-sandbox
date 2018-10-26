@@ -1,0 +1,29 @@
+# Start control machine and three nodes
+version: '3'
+services:
+  control:
+    build:
+      context: ..
+      dockerfile: docker/control/Dockerfile
+    container_name: control
+    image: ansible_sandbox/control
+    volumes:
+      - "../ansible:/etc/ansible"
+  compute_1:
+    build:
+      context: ..
+      dockerfile: docker/compute/Dockerfile
+    container_name: compute_1
+    image: ansible_sandbox/compute
+  compute_2:
+    build:
+      context: ..
+      dockerfile: docker/compute/Dockerfile
+    container_name: compute_2
+    image: ansible_sandbox/compute
+  compute_3:
+    build:
+      context: ..
+      dockerfile: docker/compute/Dockerfile
+    container_name: compute_3
+    image: ansible_sandbox/compute

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  control:
+    build:
+      context: ..
+      dockerfile: docker/control/Dockerfile
+    container_name: control
+    image: ansible_sandbox/control
+    volumes:
+      - "../ansible:/etc/ansible"
+  openstack:
+    build:
+      context: ..
+      dockerfile: docker/openstack/Dockerfile
+    container_name: openstack
+    image: ansible_sandbox/openstack
