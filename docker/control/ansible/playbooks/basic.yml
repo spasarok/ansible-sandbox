@@ -1,0 +1,4 @@
+# Not tested
+- hosts: all
+  tasks:
+    - ping

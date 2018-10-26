@@ -13,8 +13,8 @@ RUN apt-get install -y \
 COPY ./docker/mysql/.my.cnf /root/.my.cnf
 COPY ./docker/control/id_rsa.pub /root/.ssh/authorized_keys
 
-RUN mkdir -p /var/log/supervisor && \
-    mkdir -p /run/sshd
+RUN mkdir -p /var/log/supervisor \
+             /run/sshd
 COPY ./docker/mysql/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 CMD supervisord

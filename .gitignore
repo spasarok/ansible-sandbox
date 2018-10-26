@@ -1,6 +1,7 @@
 
 !ansible/
 ansible/*
+!ansible/README.md
 !ansible/ansible.cfg
 !ansible/hosts
 

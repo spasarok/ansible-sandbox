@@ -14,4 +14,6 @@ RUN apt-get install -y \
 COPY ./docker/openstack/requirements.txt /root/requirements.txt
 RUN pip install -r /root/requirements.txt
 
-CMD tail -f /dev/null
+COPY ./docker/control/id_rsa.pub /root/.ssh/authorized_keys
+
+CMD service ssh start && tail -f /dev/null

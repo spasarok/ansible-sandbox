@@ -1,0 +1,6 @@
+# Not tested
+- hosts: dbs
+  tasks:
+    - name: create table
+      shell: mysql -u root -e "use test_db; create table test_table;"
+      register: create_table_result

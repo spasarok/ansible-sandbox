@@ -7,10 +7,21 @@ services:
     container_name: control
     image: ansible_sandbox/control
     volumes:
-      - "../ansible:/etc/ansible"
+      - "../docker/control/ansible:/etc/ansible"
   openstack:
     build:
       context: ..
       dockerfile: docker/openstack/Dockerfile
     container_name: openstack
+    environment:
+      - OS_AUTH_URL
+      - OS_CACERT
+      - OS_IDENTITY_API_VERSION
+      - OS_INTERFACE
+      - OS_PASSWORD
+      - OS_PROJECT_DOMAIN_NAME
+      - OS_PROJECT_NAME
+      - OS_REGION_NAME
+      - OS_USER_DOMAIN_NAME
+      - OS_USERNAME
     image: ansible_sandbox/openstack

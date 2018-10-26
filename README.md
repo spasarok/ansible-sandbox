@@ -6,45 +6,36 @@ This project dockerizes an Ansible control machine and managed nodes for the pur
 
 * Docker Compose
 
-# Setup
-
-Set permissions for SSH keys so that they're usable. This only needs to be done once.
-
-```
-chmod 700 setup.sh
-./setup.sh
-```
-
 # Docker
 
 ## Build
 
-Build the `ansible_control` and `compute` images.
+Build images required for an example.
 
 ```
-docker-compose build
+docker-compose -f examples/basic.yml build
 ```
 
 ## Run
 
-Start the `ansible_control` and `compute_[1:3]` containers.
+Run an example
 
 ```
-docker-compose up
+docker-compose -f examples/basic.yml up
 ```
 
 ## Stop
 
-Stop running containers. Do not clear persistent storage (volumes).
+Stop running containers specified in an example. Do not clear persistent storage (volumes).
 
 ```
-docker-compose down
+docker-compose -f examples/basic.yml down
 ```
 
-Stop running containers and clear persistent storage.
+Stop running containers specified in an example and clear persistent storage (volumes).
 
 ```
-docker-compose down -v
+docker-compose -f examples/basic.yml down -v
 ```
 
 ## Images
@@ -55,7 +46,11 @@ docker-compose down -v
 * Dummy RSA keys copied to `/root/.ssh` at build time
   * DO NOT DO THIS IN PROD
 
-### Compute Nodes
+### Compute Node (Basic)
+
+* Uses Ubuntu 18.04
+
+### MySQL
 
 * Uses MySQL 8.0
 * Uses `supervisor` to start `sshd` and `mysqld`
@@ -67,10 +62,16 @@ docker-compose down -v
 
 ## Local Commands
 
+Run the basic example. Open a new tab to run the rest of the examples.
+
+```
+docker-compose -f examples/basic.yml up
+```
+
 Connect to control machine container in terminal.
 
 ```
-docker exec -it ansible_control /bin/bash
+docker exec -it control /bin/bash
 ```
 
 Connect to node container in terminal.
@@ -79,20 +80,18 @@ Connect to node container in terminal.
 docker exec -it compute_1 /bin/bash
 ```
 
-Connect to mysql running on compute from personal machine.
+Connect to mysql running on node from personal machine.
 
 ```
-mysql -u root -h 127.0.0.1 -P 3307 -p # compute_1
-mysql -u root -h 127.0.0.1 -P 3308 -p # compute_2
-mysql -u root -h 127.0.0.1 -P 3309 -p # compute_3
+mysql -u root -h 127.0.0.1 -P 3307 -p
 ```
 
 ## Example Control Commands
 
-Docker exec into `control_machine` container.
+Docker exec into `control` container.
 
 ```
-$ docker exec -it control_machine /bin/bash
+$ docker exec -it control /bin/bash
 root@79c43de9ac09:/#
 ```
 
