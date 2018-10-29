@@ -7,12 +7,12 @@ services:
     container_name: control
     image: ansible_sandbox/control
     volumes:
-      - "../ansible/playbooks/mysql.yml:/etc/ansible/playbooks/mysql.yml"
+      - "../ansible:/etc/ansible"
   db:
     build:
       context: ..
-      dockerfile: docker/mysql/Dockerfile
-    container_name: mysql_compute_1
+      dockerfile: docker/supervisor/Dockerfile
+    container_name: supervisor
     environment:
       MYSQL_DATABASE: test_db
       MYSQL_ROOT_PASSWORD: password

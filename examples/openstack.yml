@@ -18,8 +18,7 @@ services:
       - OS_USERNAME
     image: ansible_sandbox/control
     volumes:
-      - "../ansible/playbooks/openstack.yml:/etc/ansible/playbooks/openstack.yml"
-      - "../ansible/library/openstack.py:/etc/ansible/library/openstack.py"
+      - "../ansible:/etc/ansible"
   openstack:
     build:
       context: ..

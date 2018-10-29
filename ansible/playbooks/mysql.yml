@@ -1,5 +1,5 @@
 - hosts: dbs
   tasks:
     - name: create table
-      shell: mysql -u root -e "use test_db; create table test_table;"
+      shell: mysql -u root -e "use test_db; create table test_table(test_col VARCHAR(20));"
       register: create_table_result

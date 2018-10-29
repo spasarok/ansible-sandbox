@@ -10,6 +10,7 @@ RUN apt-get install -y \
 # Never do this with real keys
 COPY ./docker/control/id_rsa /root/.ssh/id_rsa_fake
 COPY ./docker/control/id_rsa.pub /root/.ssh/id_rsa_fake.pub
+COPY ./docker/control/ssh_config /root/.ssh/config
 
 RUN echo force rebuild
 

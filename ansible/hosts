@@ -6,3 +6,9 @@ compute_[1:3]
 
 [dbs]
 db_[1:2]
+
+[openstacks]
+openstack
+
+[supervisors]
+db
