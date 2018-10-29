@@ -7,7 +7,7 @@ services:
     container_name: control
     image: ansible_sandbox/control
     volumes:
-      - "./ansible:/etc/ansible"
+      - "../ansible/playbooks/mysql.yml:/etc/ansible/playbooks/mysql.yml"
   db:
     build:
       context: ..

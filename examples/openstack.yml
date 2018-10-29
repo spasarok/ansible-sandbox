@@ -5,17 +5,9 @@ services:
       context: ..
       dockerfile: docker/control/Dockerfile
     container_name: control
-    image: ansible_sandbox/control
-    volumes:
-      - "../docker/control/ansible:/etc/ansible"
-  openstack:
-    build:
-      context: ..
-      dockerfile: docker/openstack/Dockerfile
-    container_name: openstack
     environment:
       - OS_AUTH_URL
-      - OS_CACERT
+      - OS_CACERT=/root/ca.crt
       - OS_IDENTITY_API_VERSION
       - OS_INTERFACE
       - OS_PASSWORD
@@ -24,4 +16,16 @@ services:
       - OS_REGION_NAME
       - OS_USER_DOMAIN_NAME
       - OS_USERNAME
+    image: ansible_sandbox/control
+    volumes:
+      - "../ansible/playbooks/openstack.yml:/etc/ansible/playbooks/openstack.yml"
+      - "../ansible/library/openstack.py:/etc/ansible/library/openstack.py"
+  openstack:
+    build:
+      context: ..
+      dockerfile: docker/openstack/Dockerfile
+    container_name: openstack
     image: ansible_sandbox/openstack
+    volumes:
+      - "${HOME}/.ssh/id_rsa:/root/.ssh/id_rsa"
+      - "${OS_CACERT}:/root/ca.crt"

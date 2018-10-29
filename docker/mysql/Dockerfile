@@ -6,8 +6,11 @@ RUN apt-get install -y \
     man \
     openssh-server \
     python \
+    python-pip \
     supervisor \
     vim
+
+RUN pip install ansible
 
 # Never do this with real passwords
 COPY ./docker/mysql/.my.cnf /root/.my.cnf

@@ -6,10 +6,13 @@ RUN apt-get install -y \
     man \
     openssh-server \
     python \
-    python-pip
+    python-pip \
     supervisor \
     vim
 
+RUN pip install ansible
+
 COPY ./docker/control/id_rsa.pub /root/.ssh/authorized_keys
 
-CMD tail -f /dev/null
+CMD service ssh start && \
+    tail -f /dev/null

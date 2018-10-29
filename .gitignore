@@ -1,4 +1,3 @@
-
 !ansible/
 ansible/*
 !ansible/README.md
@@ -9,13 +8,13 @@ ansible/*
 ansible/group_vars/*
 !ansible/group_vars/computes/
 ansible/group_vars/computes/*
-!ansible/group_vars/computes/computes.yml
 !ansible/group_vars/computes/README.md
+!ansible/group_vars/computes/computes.yml
 
 !ansible/host_vars/
 ansible/host_vars/*
-!ansible/host_vars/compute_1.yml
 !ansible/host_vars/README.md
+!ansible/host_vars/compute_1.yml
 
 !ansible/library/
 ansible/library/*
@@ -24,6 +23,13 @@ ansible/library/*
 !ansible/module_utils/
 ansible/module_utils/*
 !ansible/module_utils/README.md
+
+!ansible/playbooks/
+ansible/playbooks/*
+!ansible/playbooks/README.md
+!ansible/playbooks/basic.yml
+!ansible/playbooks/mysql.yml
+
 
 !ansible/roles/
 ansible/roles/*

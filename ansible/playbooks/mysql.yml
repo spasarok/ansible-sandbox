@@ -1,4 +1,3 @@
-# Not tested
 - hosts: dbs
   tasks:
     - name: create table
