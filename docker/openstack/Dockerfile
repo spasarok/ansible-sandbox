@@ -3,7 +3,9 @@ EXPOSE 22
 
 RUN apt-get update
 RUN apt-get install -y \
+    iputils-ping \
     man \
+    netcat \
     openssh-server \
     python \
     python-pip \
